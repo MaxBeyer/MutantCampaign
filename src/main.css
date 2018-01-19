@@ -1,13 +1,8 @@
 body {
-  font-family: helvetica, serif;
-  border:0 0;
-  margin: 0 0;
-  padding:0 0;
   background-color: #918B89;
 }
 
 h1,h2{
-  margin: 0 0;
   color: white;
   text-shadow: #631F01 1px 0 10px;
   text-align: center;
@@ -29,57 +24,24 @@ h3{
   line-height: 16px;
 }
 
-nav {
-  margin: 1em 2em;
-  padding: 0 2em;
-  background-color: #E8DDD8;
-  text-align: center;
-  padding: 0 auto;
-}
-
-nav li{
-  display: inline-block;
-  padding: 0 2em;
-}
-
-nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-}
-
-nav li {
-    float: center;
+nav{
+  background-color: #220;
 }
 
 nav li a {
-    display: block;
-    color: black;
-    text-align: center;
-    padding: 14px 20px;
-    text-decoration: none;
+    color: white;
 }
 
 nav a:hover {
     color: white;
-    background-color: #57230C;
+    background-color: #330;
 }
 
-div{
-  margin: 1em 2em;
-  padding: 1em 2em;
-  background-color: #E8DDD8;
-}
-
-header {
-  height: 150px;
-  background-position-y: 25%;
-  background-image: url("images/header.jpg");
+.jumbotron {
+  background-image: url("images/wasteland.jpg");
   background-size: cover;
-  background-repeat: no-repeat;
-  background-color: #d3d3d3;
-  font-family: helvetica, serif;
+  background-position-y: 40%;
+  margin-bottom:0;
 }
 
 button {
