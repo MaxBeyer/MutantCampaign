@@ -1,5 +1,4 @@
 body {
-  padding-top: 50px;
   background-color: #white;
 }
 
@@ -25,6 +24,9 @@ h3{
   line-height: 16px;
 }
 
+.navbar {
+  margin-bottom: 0;
+}
 /* nav{
   background-color: #220;
 }
@@ -39,45 +41,28 @@ nav a:hover {
 } */
 
 .jumbotron {
-  background-image: url("images/wasteland.jpg");
+  background: linear-gradient(to bottom, transparent 80%, white),
+      url("images/wasteland.jpg");
+  /* background-image: url("images/wasteland.jpg"); */
   background-size: cover;
   background-position-y: 40%;
   margin-bottom:0;
 }
 
-button {
-  margin:auto;
-  display:block;
-  background-color: rgb(82, 186, 179);
-  border-radius: 6px;
-  border: none;
-  color: rgb(255, 255, 255);
-  padding: 10px;
-  text-transform: uppercase;
-  width: 200px;
-  cursor: pointer;
-  text-align: center;
-}
-
-.diceDiv{
-  text-align: center;
+.first-element{
+  margin-top: 2em;
 }
 
 #placeholder1, #placeholder2 {
   height: 50px;
   width: 50px;
   padding: 5px;
-  margin: 5px auto;
+  margin: 0;
   border: 1px solid gray;
   border-radius: 10px;
-  font-size:40px;
+  font-size:30px;
   text-align: center;
   display: inline-block;
-}
-
-.mutation{
-  border: 1px solid gray;
-  text-align: center;
 }
 
 #yourMutation{
@@ -85,8 +70,9 @@ button {
 }
 
 p#mutationPlaceholderMutation{
-  text-align: center;
-  /* font-weight: bold; */
+  text-align: left;
+  font-weight: bold;
+  margin-top: 1.5em;
 }
 
 p#mutationPlaceholderDescription{
