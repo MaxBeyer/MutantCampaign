@@ -30,7 +30,7 @@ rollMutationButton.onclick = function() {
   let result2 = dice.roll();
   let baseSixResult = (result1 * 10) + result2;
   printNumber(result1, result2);
-  printMutation(baseSixResult);
+  printMutation(11);
 };
 
 let acidSpit = {
