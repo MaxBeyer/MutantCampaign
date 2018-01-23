@@ -42,7 +42,7 @@ nav a:hover {
 
 .jumbotron {
   background: linear-gradient(to bottom, transparent 80%, white),
-      url("images/wasteland.jpg");
+      url("../images/wasteland.jpg");
   /* background-image: url("images/wasteland.jpg"); */
   background-size: cover;
   background-position-y: 40%;
