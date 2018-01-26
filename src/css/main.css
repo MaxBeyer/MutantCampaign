@@ -1,5 +1,8 @@
 body {
   background-color: #white;
+  background: linear-gradient(rgba(255,255,255,.85),rgba(255,255,255,.85)),
+      url("../images/background-image.png");
+  background-size: contain;
   font-size: 16px;
   line-height: 1.5;
 }
@@ -29,21 +32,9 @@ h3{
 .navbar {
   margin-bottom: 0;
 }
-/* nav{
-  background-color: #220;
-}
-
-nav li a {
-    color: white;
-}
-
-nav a:hover {
-    color: white;
-    background-color: #330;
-} */
 
 .jumbotron {
-  background: linear-gradient(to bottom, transparent 80%, white),
+  background: linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5)),
       url("../images/wasteland.jpg");
   /* background-image: url("images/wasteland.jpg"); */
   background-size: cover;
