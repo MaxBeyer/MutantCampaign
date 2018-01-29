@@ -31,6 +31,11 @@ body {
   padding: 20px 10px 0px 10px;
 }
 
+.nav {
+  font-size: 24px;
+  font-family:"Big Noodle Tilting";
+}
+
 h2{
   font-size: 25px;
   line-height: 50px;
