@@ -1,13 +1,25 @@
+@font-face {
+  font-family: "Big Noodle Tilting";
+  src: url("/fonts/big_noodle_titling.ttf");
+}
+@font-face {
+  font-family: "Locke";
+  src: url("/fonts/locke-regular.otf");
+}
+
 body {
   background-color: #white;
-  background: linear-gradient(rgba(255,255,255,.85),rgba(255,255,255,.85)),
-      url("../images/background-image.png");
-  background-size: contain;
   font-size: 16px;
   line-height: 1.5;
+  background: linear-gradient(rgba(255,255,255,.70),rgba(255,255,255,.70)),
+      url("../images/background.bmp");
+  background-size: cover;
+  background-position: bottom;
+  background-repeat: no-repeat;
 }
 
 .jumbotron h1, h2{
+  font-family: "Big Noodle Tilting";
   color: white;
   line-height: 50px;
   text-shadow: #631F01 1px 0 10px;
@@ -26,7 +38,12 @@ h2{
 }
 
 h3{
+  font-family: "Big Noodle Tilting";
   font-size: 24px;
+}
+
+p{
+  font-family: Locke;
 }
 
 .navbar {
