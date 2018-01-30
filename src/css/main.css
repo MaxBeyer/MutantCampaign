@@ -14,8 +14,10 @@ body {
   background: linear-gradient(rgba(255,255,255,.70),rgba(255,255,255,.70)),
       url("../images/background.bmp");
   background-size: cover;
-  background-position: bottom;
+  background-position-y: 15em;
   background-repeat: no-repeat;
+  height: 100%;
+  position: relative;
 }
 
 .jumbotron h1, h2{
@@ -68,6 +70,15 @@ p{
   margin-top: 2em;
 }
 
+.footer {
+   position: fixed;
+   bottom: 0;
+   width: 100%;
+   background-color: #222;
+   border-color: #080808;
+   color:white;
+}
+
 #placeholder1, #placeholder2 {
   height: 50px;
   width: 50px;
@@ -80,8 +91,8 @@ p{
   display: inline-block;
 }
 
-#yourMutation{
-  font-style: italic;
+#copyright{
+  font-size: 12px;
 }
 
 p#mutationPlaceholderMutation{
@@ -94,3 +105,26 @@ p#mutationPlaceholderDescription{
   text-align: left;
   font-style: normal;
 }
+
+.social {
+  padding: 5px 15px;
+  color: #777;
+     -webkit-transform: scale(0.8);
+     /* Browser Variations: */
+
+     -moz-transform: scale(0.8);
+     -o-transform: scale(0.8);
+     -webkit-transition-duration: 0.5s;
+     -moz-transition-duration: 0.5s;
+     -o-transition-duration: 0.5s;
+ }
+
+ #social-fb:hover {
+     color: #3B5998;
+ }
+ #social-tw:hover {
+     color: #4099FF;
+ }
+ #social-em:hover {
+     color: #f39c12;
+ }
