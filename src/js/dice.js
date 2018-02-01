@@ -39,7 +39,7 @@ let acidSpit = {
 };
 let amphibian = {
   mutation: "Amphibian",
-  description: ""
+  description: "Your metabolism is abnormally robust, as well as your jaws and teeth. You can: <li> Eat raw meat, even several days after the prey’s death, without suffering Rot Points . Small game counts as one ration of grub each. Bigger creatures – or humanoids – count as two rations. <li> Bite a victim at Arm’s Length. The attack inflicts damage equal to the number of MP spent."
 };
 let corpseEater = {
   mutation: "Corpse-Eater",
