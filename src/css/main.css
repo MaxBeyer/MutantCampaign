@@ -106,6 +106,10 @@ p#mutationPlaceholderDescription{
   font-style: normal;
 }
 
+#rollMutationButton{
+  margin-right: 5px;
+}
+
 .social {
   padding: 5px 15px;
   color: #777;
