@@ -23,7 +23,10 @@ function printMutation(number) {
   mutationPlaceholderDescription.innerHTML = mutationTable.get(number).description;
 }
 
-let rollMutationButton = document.getElementById('rollMutationButton');
+function printSectorEnvironment(number){
+  let sectorPlaceholderEnvironment = document.getElementById('sectorPlaceholderEnvironment');
+  sectorPlaceholderEnvironment.innerHTML = number;
+}
 
 function roll2d6(){
   let result1 = dice.roll();
@@ -32,6 +35,7 @@ function roll2d6(){
   return baseSixResult;
 }
 
+let rollMutationButton = document.getElementById('rollMutationButton');
 rollMutationButton.onclick = function() {
   let reroll = true;
   let diceRoll = roll2d6();
@@ -46,6 +50,12 @@ rollMutationButton.onclick = function() {
   printNumber(Math.floor((diceRoll / 10) % 10), Math.floor((diceRoll / 1) % 10));
   printMutation(diceRoll);
 };
+
+let generateSectorButton = document.getElementById('generateSectorButton');
+generateSectorButton.onclick = function() {
+  let diceRoll = roll2d6();
+  printSectorEnvironment(diceRoll);
+}
 
 let acidSpit = {
   mutation: "Acid Spit",
