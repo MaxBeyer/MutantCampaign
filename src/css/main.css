@@ -70,6 +70,14 @@ p{
   margin-top: 2em;
 }
 
+.mutation-panel{
+  height: 520px;
+}
+
+.sector-panel{
+  height: 350px;
+}
+
 .footer {
    position: fixed;
    bottom: 0;

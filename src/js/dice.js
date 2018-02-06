@@ -23,10 +23,10 @@ function printMutation(number) {
   mutationPlaceholderDescription.innerHTML = mutationTable.get(number).description;
 }
 
-function printSectorEnvironment(number){
-  let sectorPlaceholderEnvironment = document.getElementById('sectorPlaceholderEnvironment');
-  sectorPlaceholderEnvironment.innerHTML = number;
-}
+// function printSectorEnvironment(number){
+//   let sectorPlaceholderEnvironment = document.getElementById('sectorPlaceholderEnvironment');
+//   sectorPlaceholderEnvironment.innerHTML = number;
+// }
 
 function roll2d6(){
   let result1 = dice.roll();
@@ -53,8 +53,12 @@ rollMutationButton.onclick = function() {
 
 let generateSectorButton = document.getElementById('generateSectorButton');
 generateSectorButton.onclick = function() {
-  let diceRoll = roll2d6();
-  printSectorEnvironment(diceRoll);
+  document.getElementById('sectorPlaceholderEnvironment').innerHTML = roll2d6();
+  document.getElementById('sectorPlaceholderRuins').innerHTML = roll2d6();
+  document.getElementById('sectorPlaceholderRotLevel').innerHTML = roll2d6();
+  document.getElementById('sectorPlaceholderThreatLevel').innerHTML = roll2d6();
+  document.getElementById('sectorPlaceholderThreatsInTheZone').innerHTML = roll2d6();
+  document.getElementById('sectorPlaceholderArtifacts').innerHTML = roll2d6();
 }
 
 let acidSpit = {
