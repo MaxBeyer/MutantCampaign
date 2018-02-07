@@ -82,6 +82,14 @@ p{
   background-color: white;
 }
 
+#threatLevel.input-group{
+  width: 300px;
+}
+
+#threatLevelInput.form-control{
+  height: 46px;
+}
+
 .footer {
    position: fixed;
    bottom: 0;

@@ -1,79 +1,66 @@
 let thickWoods = {
   environment: "Thick Woods",
   ruin: false,
-  threat: true,
   artifact: false
 };
 let scrublands = {
   environment: "Scrublands",
   ruin: false,
-  threat: true,
   artifact: false
 };
 let marshlands = {
   environment: "Marshlands",
   ruin: false,
-  threat: true,
   artifact: false
 };
 let deadWoods = {
   environment: "Dead Woods",
   ruin: false,
-  threat: true,
   artifact: false
 };
 let ashDesert = {
   environment: "Ash Desert",
   ruin: false,
-  threat: true,
   artifact: false
 };
 let hugeCrater = {
   environment: "Huge Crater",
   ruin: false,
-  threat: true,
   artifact: false
 };
 let glasifiedField = {
   environment: "Glasified Field",
   ruin: false,
-  threat: true,
   artifact: false
 };
 let overgrownRuins = {
   environment: "Overgrown Ruins",
   ruin: true,
-  threat: true,
   artifact: true
 };
 let crumblingRuins = {
   environment: "Crumbling Ruins",
   ruin: true,
-  threat: true,
   artifact: true
 };
 let decayedRuins = {
   environment: "Decayed Ruins",
   ruin: true,
-  threat: true,
   artifact: true
 };
 let unscathedRuins = {
   environment: "Unscathed Ruins",
   ruin: true,
-  threat: true,
   artifact: true
 };
 let derelictIndustries = {
   environment: "Derelict Industries",
   ruin: true,
-  threat: true,
   artifact: true
 };
 let settlement = {
   environment: "Settlement",
   ruin: true,
-  threat: true,
   artifact: true
 };
 

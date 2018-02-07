@@ -1,6 +1,9 @@
 let acidSpit = {
   mutation: "Acid Spit",
-  description: "Glands in your mouth generate a potent acid. You can: <li> Spit Acid at a target at up to Near range. Costs 1 MP, deals one point of damage directly and one more each turn until the victim rolls to Move. Armor works against the acid. <li> Use your acid to melt a thin rope or bar, or a small object. Costs 1 MP <li> Open a simple lock. Costs 1 MP"
+  description: `<p>Glands in your mouth generate a potent acid. You can:</p>
+   <li> Spit Acid at a target at up to Near range. Costs 1 MP, deals one point of damage directly and one more each turn until the victim rolls to Move. Armor works against the acid.</li>
+   <li> Use your acid to melt a thin rope or bar, or a small object. Costs 1 MP</li>
+   <li> Open a simple lock. Costs 1 MP</li>`
 };
 let amphibian = {
   mutation: "Amphibian",

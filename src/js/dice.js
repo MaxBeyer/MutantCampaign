@@ -1,10 +1,19 @@
 import { mutationData } from './data/mutationsData.js';
 import { sectorData } from './data/sectorData.js';
 import { rotData } from './data/rotData.js';
+import { normalRuinData, industrialRuinData } from './data/ruinData.js';
 
 var dice = {
   sides: 6,
   roll: function () {
+    var randomNumber = Math.floor(Math.random() * this.sides) + 1;
+    return randomNumber;
+  }
+}
+
+var coinFlip = {
+  sides: 2,
+  flip: function () {
     var randomNumber = Math.floor(Math.random() * this.sides) + 1;
     return randomNumber;
   }
@@ -20,11 +29,8 @@ function printNumber(number1, number2) {
 }
 
 function printMutation(number) {
-  let mutationPlaceholderMutation = document.getElementById('mutationPlaceholderMutation');
-  let mutationPlaceholderDescription = document.getElementById('mutationPlaceholderDescription');
-
-  mutationPlaceholderMutation.innerHTML = mutationData.get(number).mutation;
-  mutationPlaceholderDescription.innerHTML = mutationData.get(number).description;
+  document.getElementById('mutationPlaceholderMutation').innerHTML = mutationData.get(number).mutation;
+  document.getElementById('mutationPlaceholderDescription').innerHTML = mutationData.get(number).description;
 }
 
 function roll2d6(){
@@ -52,33 +58,43 @@ rollMutationButton.onclick = function() {
 
 let generateSectorButton = document.getElementById('generateSectorButton');
 generateSectorButton.onclick = function() {
+  //validate the threatLevelInput is present
+  let threatLevelInput = document.getElementById('threatLevelInput').value;
+  if(threatLevelInput == ""){
+    alert("You have to enter a threat leve first. How else will you fuck up the players?")
+  } else {
+    generateSector(threatLevelInput)
+  }
+}
+
+function generateSector(threatLevelInput){
+  //sector and rot defined here because they will always be rolled and used
   let sector = sectorData.get(roll2d6());
   let rot = rotData.get(roll2d6());
+  let industrialRuin = industrialRuinData.get(roll2d6());
   document.getElementById('sectorPlaceholderEnvironment').innerHTML = `
     <p><b>Environment: </b> ${sector.environment}</p>
-    <p><b>Ruin Roll: </b> ${roll2d6()}</p>
-    <p><b>Threat Level Roll: </b> ${roll2d6()}</p>
-    <p><b>Artifact Roll: </b> ${roll2d6()}</p>
     <p><b>Rot Level ${rot.rotLevel}: </b> ${rot.description}</p>
+    <p><b>Threat Level: </b> ${threatLevelInput}</p>
     <p><b>Threats in the zone roll: </b> ${roll2d6()}</p>
   `
-  // document.getElementById('sectorPlaceholderEnvironment').innerHTML = "<b>Environment:</b> " + sector.environment;
-  // if(sector.ruin){
-  //   document.getElementById('sectorPlaceholderRuins').innerHTML = "Ruin Roll: " + roll2d6();
-  // } else {
-  //   document.getElementById('sectorPlaceholderRuins').innerHTML = "";
-  // }
-  // if(sector.threat){
-  //   document.getElementById('sectorPlaceholderThreatLevel').innerHTML = "Threat Level Roll: " + roll2d6();
-  // } else {
-  //   document.getElementById('sectorPlaceholderThreatLevel').innerHTML = "";
-  // }
-  // if(sector.artifact){
-  //   document.getElementById('sectorPlaceholderArtifacts').innerHTML = "Artifact Roll: " + roll2d6();
-  // } else {
-  //   document.getElementById('sectorPlaceholderArtifacts').innerHTML = "";
-  // }
-  // let rot = rotData.get(roll2d6());
-  // document.getElementById('sectorPlaceholderRotLevel').innerHTML = "<b>Rot Level " + rot.rotLevel +":</b> " + rot.description;
-  // document.getElementById('sectorPlaceholderThreatsInTheZone').innerHTML = roll2d6();
+  //There are not always ruins or artifacts.  The following conditionals account for that.
+  if(sector.ruin){
+    if(coinFlip.flip() == 1){
+      //ruin data defined here because it is conditional and might not be needed
+      let normalRuin = normalRuinData.get(roll2d6());
+      document.getElementById('sectorPlaceholderRuins').innerHTML = `<p><b>Ruin (${normalRuin.ruin}): </b>${normalRuin.description}</p>`;
+    } else {
+      //ruin data defined here because it is conditional and might not be needed
+      let industrialRuin = industrialRuinData.get(roll2d6());
+      document.getElementById('sectorPlaceholderRuins').innerHTML = `<p><b>Ruin (${industrialRuin.ruin}): </b>${industrialRuin.description}</p>`;
+    }
+  } else {
+    document.getElementById('sectorPlaceholderRuins').innerHTML = "";
+  }
+  if(sector.artifact){
+    document.getElementById('sectorPlaceholderArtifacts').innerHTML = `<p><b>Artifact Roll: </b> ${roll2d6()}</p>`;
+  } else {
+    document.getElementById('sectorPlaceholderArtifacts').innerHTML = "";
+  }
 }
