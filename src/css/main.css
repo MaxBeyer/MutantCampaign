@@ -75,7 +75,11 @@ p{
 }
 
 .sector-panel{
-  height: 350px;
+  height:    350px;
+}
+
+.well {
+  background-color: white;
 }
 
 .footer {
@@ -85,6 +89,10 @@ p{
    background-color: #222;
    border-color: #080808;
    color:white;
+}
+
+#reactiveEffectsTitle, #enhancingEffectsTitle {
+  margin-left: 15px;
 }
 
 #placeholder1, #placeholder2 {
