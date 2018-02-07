@@ -51,13 +51,19 @@ generateSectorButton.onclick = function() {
   let sector = sectorTable.get(roll2d6());
   document.getElementById('sectorPlaceholderEnvironment').innerHTML = "<b>Environment:</b> " + sector.environment;
   if(sector.ruin){
-    document.getElementById('sectorPlaceholderRuins').innerHTML = roll2d6();
+    document.getElementById('sectorPlaceholderRuins').innerHTML = "Ruin Roll: " + roll2d6();
+  } else {
+    document.getElementById('sectorPlaceholderRuins').innerHTML = "";
   }
   if(sector.threat){
-    document.getElementById('sectorPlaceholderThreatLevel').innerHTML = roll2d6();
+    document.getElementById('sectorPlaceholderThreatLevel').innerHTML = "Threat Level Roll: " + roll2d6();
+  } else {
+    document.getElementById('sectorPlaceholderThreatLevel').innerHTML = "";
   }
   if(sector.artifact){
-    document.getElementById('sectorPlaceholderArtifacts').innerHTML = roll2d6();
+    document.getElementById('sectorPlaceholderArtifacts').innerHTML = "Artifact Roll: " + roll2d6();
+  } else {
+    document.getElementById('sectorPlaceholderArtifacts').innerHTML = "";
   }
   let rot = rotTable.get(roll2d6());
   document.getElementById('sectorPlaceholderRotLevel').innerHTML = "<b>Rot Level " + rot.rotLevel +":</b> " + rot.description;
