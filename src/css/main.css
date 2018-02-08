@@ -83,6 +83,7 @@ p{
 }
 
 #threatLevel.input-group{
+  padding-left: 1em;
   width: 300px;
 }
 
