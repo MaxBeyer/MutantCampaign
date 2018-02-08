@@ -1,5 +1,6 @@
 import { mutationData } from './data/mutationsData.js';
 import { sectorData } from './data/sectorData.js';
+import { moodData } from './data/moodData.js';
 import { rotData } from './data/rotData.js';
 import { normalRuinData, industrialRuinData } from './data/ruinData.js';
 
@@ -9,6 +10,13 @@ var dice = {
     var randomNumber = Math.floor(Math.random() * this.sides) + 1;
     return randomNumber;
   }
+}
+
+function roll2d6(){
+  let result1 = dice.roll();
+  let result2 = dice.roll();
+  let baseSixResult = (result1 * 10) + result2;
+  return baseSixResult;
 }
 
 var coinFlip = {
@@ -31,13 +39,6 @@ function printNumber(number1, number2) {
 function printMutation(number) {
   document.getElementById('mutationPlaceholderMutation').innerHTML = mutationData.get(number).mutation;
   document.getElementById('mutationPlaceholderDescription').innerHTML = mutationData.get(number).description;
-}
-
-function roll2d6(){
-  let result1 = dice.roll();
-  let result2 = dice.roll();
-  let baseSixResult = (result1 * 10) + result2;
-  return baseSixResult;
 }
 
 let rollMutationButton = document.getElementById('rollMutationButton');
@@ -67,17 +68,38 @@ generateSectorButton.onclick = function() {
   }
 }
 
+function generateThreatsAndArtifacts(threatLevelInput){
+  let threats = 0;
+  let artifacts = 0;
+  for(var i = 0; i <= threatLevelInput; i++){
+    let threatLevelRoll = dice.roll();
+    if(threatLevelRoll == 6){
+      artifacts += 1;
+    } else if(threatLevelRoll == 1){
+      threats += 1;
+    }
+  }
+  return [threats, artifacts];
+}
+
 function generateSector(threatLevelInput){
   //sector and rot defined here because they will always be rolled and used
   let sector = sectorData.get(roll2d6());
+  let mood = moodData.get(roll2d6());
   let rot = rotData.get(roll2d6());
-  let industrialRuin = industrialRuinData.get(roll2d6());
+  let [threats, artifacts] = generateThreatsAndArtifacts(threatLevelInput);
   document.getElementById('sectorPlaceholderEnvironment').innerHTML = `
     <p><b>Environment: </b> ${sector.environment}</p>
+    <p><b>Mood Element: </b> ${mood}</p>
     <p><b>Rot Level ${rot.rotLevel}: </b> ${rot.description}</p>
-    <p><b>Threat Level: </b> ${threatLevelInput}</p>
-    <p><b>Threats in the zone roll: </b> ${roll2d6()}</p>
   `
+  if(threats > 0){
+    let threatsArray = [];
+    for(var i = 1; i <= threats; i++){
+      threatsArray.push("<li>Threat " + i + "</li>")
+    }
+    document.getElementById('sectorPlaceholderThreats').innerHTML = `<p><b>Threats: </b> ${threats} ${threatsArray.join('')}</p>`;
+  }
   //There are not always ruins or artifacts.  The following conditionals account for that.
   if(sector.ruin){
     if(coinFlip.flip() == 1){
@@ -92,8 +114,12 @@ function generateSector(threatLevelInput){
   } else {
     document.getElementById('sectorPlaceholderRuins').innerHTML = "";
   }
-  if(sector.artifact){
-    document.getElementById('sectorPlaceholderArtifacts').innerHTML = `<p><b>Artifact Roll: </b> ${roll2d6()}</p>`;
+  if(sector.artifact && artifacts > 0){
+    let artifactsArray =[]
+    for(var i = 1; i <= artifacts; i++){
+      artifactsArray.push("<li>Artifact " + i + "</li>");
+    }
+    document.getElementById('sectorPlaceholderArtifacts').innerHTML = `<p><b>Artifacts: </b> ${artifacts} ${artifactsArray.join('')}</p>`;
   } else {
     document.getElementById('sectorPlaceholderArtifacts').innerHTML = "";
   }

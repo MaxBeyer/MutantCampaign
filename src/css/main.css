@@ -75,7 +75,7 @@ p{
 }
 
 .sector-panel{
-  height:    350px;
+  height: auto;
 }
 
 .well {
