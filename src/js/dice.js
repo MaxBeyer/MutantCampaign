@@ -82,6 +82,34 @@ function generateThreatsAndArtifacts(threatLevelInput){
   return [threats, artifacts];
 }
 
+function rollRuin(){
+  if(coinFlip.flip() == 1){
+    //ruin data defined here because it is conditional and might not be needed
+    let normalRuin = normalRuinData.get(roll2d6());
+    document.getElementById('sectorPlaceholderRuins').innerHTML = `<p><b>Ruin (${normalRuin.ruin}): </b>${normalRuin.description}</p>`;
+  } else {
+    //ruin data defined here because it is conditional and might not be needed
+    let industrialRuin = industrialRuinData.get(roll2d6());
+    document.getElementById('sectorPlaceholderRuins').innerHTML = `<p><b>Ruin (${industrialRuin.ruin}): </b>${industrialRuin.description}</p>`;
+  }
+}
+
+function rollThreats(threats){
+  let threatsArray = [];
+  for(var i = 1; i <= threats; i++){
+    threatsArray.push("<li>Threat " + i + "</li>")
+  }
+  document.getElementById('sectorPlaceholderThreats').innerHTML = `<p><b>Threats: </b> ${threats} ${threatsArray.join('')}</p>`;
+}
+
+function rollArtifacts(artifacts){
+  let artifactsArray =[]
+  for(var i = 1; i <= artifacts; i++){
+    artifactsArray.push("<li>Artifact " + i + "</li>");
+  }
+  document.getElementById('sectorPlaceholderArtifacts').innerHTML = `<p><b>Artifacts: </b> ${artifacts} ${artifactsArray.join('')}</p>`;
+}
+
 function generateSector(threatLevelInput){
   //sector and rot defined here because they will always be rolled and used
   let sector = sectorData.get(roll2d6());
@@ -94,32 +122,16 @@ function generateSector(threatLevelInput){
     <p><b>Rot Level ${rot.rotLevel}: </b> ${rot.description}</p>
   `
   if(threats > 0){
-    let threatsArray = [];
-    for(var i = 1; i <= threats; i++){
-      threatsArray.push("<li>Threat " + i + "</li>")
-    }
-    document.getElementById('sectorPlaceholderThreats').innerHTML = `<p><b>Threats: </b> ${threats} ${threatsArray.join('')}</p>`;
+    rollThreats(threats);
   }
   //There are not always ruins or artifacts.  The following conditionals account for that.
   if(sector.ruin){
-    if(coinFlip.flip() == 1){
-      //ruin data defined here because it is conditional and might not be needed
-      let normalRuin = normalRuinData.get(roll2d6());
-      document.getElementById('sectorPlaceholderRuins').innerHTML = `<p><b>Ruin (${normalRuin.ruin}): </b>${normalRuin.description}</p>`;
-    } else {
-      //ruin data defined here because it is conditional and might not be needed
-      let industrialRuin = industrialRuinData.get(roll2d6());
-      document.getElementById('sectorPlaceholderRuins').innerHTML = `<p><b>Ruin (${industrialRuin.ruin}): </b>${industrialRuin.description}</p>`;
-    }
+    rollRuin();
   } else {
     document.getElementById('sectorPlaceholderRuins').innerHTML = "";
   }
   if(sector.artifact && artifacts > 0){
-    let artifactsArray =[]
-    for(var i = 1; i <= artifacts; i++){
-      artifactsArray.push("<li>Artifact " + i + "</li>");
-    }
-    document.getElementById('sectorPlaceholderArtifacts').innerHTML = `<p><b>Artifacts: </b> ${artifacts} ${artifactsArray.join('')}</p>`;
+    rollArtifacts(artifacts);
   } else {
     document.getElementById('sectorPlaceholderArtifacts').innerHTML = "";
   }
