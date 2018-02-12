@@ -13,9 +13,20 @@ var dice = {
 }
 
 function roll2d6(){
-  let result1 = dice.roll();
-  let result2 = dice.roll();
-  let baseSixResult = (result1 * 10) + result2;
+  let baseSixResult = (dice.roll() * 10) + dice.roll();
+  return baseSixResult;
+}
+
+function roll3d6(){
+  let baseSixResult = (result1 * 100) + roll2d6();
+  return baseSixResult;
+}
+
+function rollXNumberOfD6(x){
+  let baseSixResult = dice.roll();
+  for(var i = 2; i<=x; i++){
+    baseSixResult = (dice.roll() * 10) + baseSixResult;
+  }
   return baseSixResult;
 }
 
