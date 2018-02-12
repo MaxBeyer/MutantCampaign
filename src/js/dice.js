@@ -3,34 +3,9 @@ import { sectorData } from './data/sectorData.js';
 import { moodData } from './data/moodData.js';
 import { rotData } from './data/rotData.js';
 import { normalRuinData, industrialRuinData } from './data/ruinData.js';
+import { artifactData } from './data/artifactData.js';
 
-var dice = {
-  sides: 6,
-  roll: function () {
-    var randomNumber = Math.floor(Math.random() * this.sides) + 1;
-    return randomNumber;
-  }
-}
-
-function roll2d6(){
-  let baseSixResult = (dice.roll() * 10) + dice.roll();
-  return baseSixResult;
-}
-
-function roll3d6(){
-  let baseSixResult = (result1 * 100) + roll2d6();
-  return baseSixResult;
-}
-
-function rollXNumberOfD6(x){
-  let baseSixResult = dice.roll();
-  for(var i = 2; i<=x; i++){
-    baseSixResult = (dice.roll() * 10) + baseSixResult;
-  }
-  return baseSixResult;
-}
-
-var coinFlip = {
+var coin = {
   sides: 2,
   flip: function () {
     var randomNumber = Math.floor(Math.random() * this.sides) + 1;
@@ -38,7 +13,23 @@ var coinFlip = {
   }
 }
 
-//Prints dice roll to the page
+var d6 = {
+  sides: 6,
+  roll: function () {
+    var randomNumber = Math.floor(Math.random() * this.sides) + 1;
+    return randomNumber;
+  }
+}
+
+function rollXNumberOfD6(x){
+  let baseSixResult = d6.roll();
+  for(var i = 2; i<=x; i++){
+    baseSixResult = (d6.roll() * Math.pow(10, i-1)) + baseSixResult;
+  }
+  return baseSixResult;
+}
+
+//Prints d6 roll to the page
 function printNumber(number1, number2) {
   let placeholder1 = document.getElementById('placeholder1');
   let placeholder2 = document.getElementById('placeholder2');
@@ -55,14 +46,14 @@ function printMutation(number) {
 let rollMutationButton = document.getElementById('rollMutationButton');
 rollMutationButton.onclick = function() {
   let reroll = true;
-  let diceRoll = roll2d6();
+  let diceRoll = rollXNumberOfD6(2);
 
   while(reroll){
-    if(diceRoll < 51){
+    if(diceRoll < 52){
         reroll = false;
         break;
     }
-    diceRoll = roll2d6();
+    diceRoll = rollXNumberOfD6(2);
   }
   printNumber(Math.floor((diceRoll / 10) % 10), Math.floor((diceRoll / 1) % 10));
   printMutation(diceRoll);
@@ -83,7 +74,7 @@ function generateThreatsAndArtifacts(threatLevelInput){
   let threats = 0;
   let artifacts = 0;
   for(var i = 0; i <= threatLevelInput; i++){
-    let threatLevelRoll = dice.roll();
+    let threatLevelRoll = d6.roll();
     if(threatLevelRoll == 6){
       artifacts += 1;
     } else if(threatLevelRoll == 1){
@@ -94,13 +85,13 @@ function generateThreatsAndArtifacts(threatLevelInput){
 }
 
 function rollRuin(){
-  if(coinFlip.flip() == 1){
+  if(coin.flip() == 1){
     //ruin data defined here because it is conditional and might not be needed
-    let normalRuin = normalRuinData.get(roll2d6());
+    let normalRuin = normalRuinData.get(rollXNumberOfD6(2));
     document.getElementById('sectorPlaceholderRuins').innerHTML = `<p><b>Ruin (${normalRuin.ruin}): </b>${normalRuin.description}</p>`;
   } else {
     //ruin data defined here because it is conditional and might not be needed
-    let industrialRuin = industrialRuinData.get(roll2d6());
+    let industrialRuin = industrialRuinData.get(rollXNumberOfD6(2));
     document.getElementById('sectorPlaceholderRuins').innerHTML = `<p><b>Ruin (${industrialRuin.ruin}): </b>${industrialRuin.description}</p>`;
   }
 }
@@ -116,16 +107,20 @@ function rollThreats(threats){
 function rollArtifacts(artifacts){
   let artifactsArray =[]
   for(var i = 1; i <= artifacts; i++){
-    artifactsArray.push("<li>Artifact " + i + "</li>");
+    var tempRoll = rollXNumberOfD6(3);
+    while(tempRoll > 642){
+       tempRoll = rollXNumberOfD6(3)
+    }
+    artifactsArray.push(artifactData.get(rollXNumberOfD6(3)));
   }
-  document.getElementById('sectorPlaceholderArtifacts').innerHTML = `<p><b>Artifacts: </b> ${artifacts} ${artifactsArray.join('')}</p>`;
+  document.getElementById('sectorPlaceholderArtifacts').innerHTML = `<h4>Artifacts: </h4><ol>${artifactsArray.join('')}</ol>`;
 }
 
 function generateSector(threatLevelInput){
   //sector and rot defined here because they will always be rolled and used
-  let sector = sectorData.get(roll2d6());
-  let mood = moodData.get(roll2d6());
-  let rot = rotData.get(roll2d6());
+  let sector = sectorData.get(rollXNumberOfD6(2));
+  let mood = moodData.get(rollXNumberOfD6(2));
+  let rot = rotData.get(rollXNumberOfD6(2));
   let [threats, artifacts] = generateThreatsAndArtifacts(threatLevelInput);
   document.getElementById('sectorPlaceholderEnvironment').innerHTML = `
     <p><b>Environment: </b> ${sector.environment}</p>
