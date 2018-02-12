@@ -111,7 +111,7 @@ function rollArtifacts(artifacts){
     while(tempRoll > 642){
        tempRoll = rollXNumberOfD6(3)
     }
-    artifactsArray.push(artifactData.get(rollXNumberOfD6(3)));
+    artifactsArray.push(artifactData.get(tempRoll));
   }
   document.getElementById('sectorPlaceholderArtifacts').innerHTML = `<h4>Artifacts: </h4><ol>${artifactsArray.join('')}</ol>`;
 }
@@ -129,6 +129,8 @@ function generateSector(threatLevelInput){
   `
   if(threats > 0){
     rollThreats(threats);
+  } else {
+    document.getElementById('sectorPlaceholderThreats').innerHTML = "";
   }
   //There are not always ruins or artifacts.  The following conditionals account for that.
   if(sector.ruin){
