@@ -4,6 +4,7 @@ import { moodData } from './data/moodData.js';
 import { rotData } from './data/rotData.js';
 import { normalRuinData, industrialRuinData } from './data/ruinData.js';
 import { artifactData } from './data/artifactData.js';
+import{ humanoidThreat, threatData, threatTemplate } from './data/threatData.js';
 
 var coin = {
   sides: 2,
@@ -99,9 +100,9 @@ function rollRuin(){
 function rollThreats(threats){
   let threatsArray = [];
   for(var i = 1; i <= threats; i++){
-    threatsArray.push("<li>Threat " + i + "</li>")
+    threatsArray.push((threatData.get(1)).get(11));
   }
-  document.getElementById('sectorPlaceholderThreats').innerHTML = `<p><b>Threats: </b> ${threats} ${threatsArray.join('')}</p>`;
+  document.getElementById('sectorPlaceholderThreats').innerHTML = `<h4>Threats: </h4> <ol>${threatsArray.map(threatTemplate).join("")}</ol>`;
 }
 
 function rollArtifacts(artifacts){
