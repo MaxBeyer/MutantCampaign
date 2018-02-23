@@ -100,7 +100,7 @@ function rollRuin(){
 function rollThreats(threats){
   let threatsArray = [];
   for(var i = 1; i <= threats; i++){
-    threatsArray.push((threatData.get(1)).get(11));
+    threatsArray.push((threatData.get(rollXNumberOfD6(1))).get(rollXNumberOfD6(2)));
   }
   document.getElementById('sectorPlaceholderThreats').innerHTML = `<h4>Threats: </h4> <ol>${threatsArray.map(threatTemplate).join("")}</ol>`;
 }

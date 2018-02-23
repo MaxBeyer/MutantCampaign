@@ -586,25 +586,60 @@ threatData.set(5, phenomenonThreat);
 threatData.set(6, phenomenonThreat);
 
 //(Know the Zone Modifier: ${threat.knowTheZone})
-function threatTemplate(threat) {
+function createAdditionalDetailsArray(threat) {
+  let additionalDetailsArray = [];
+  let additionalDetailsArrayFormatted = [];
+  if(threat.effect != undefined) {
+    additionalDetailsArray.push(threat.effect);
+  };
+  if(threat.attributes != undefined) {
+    additionalDetailsArray.push(threat.attributes);
+  };
+  if(threat.skills != undefined) {
+    additionalDetailsArray.push(threat.skills);
+  };
+  if(threat.mutations != undefined) {
+    additionalDetailsArray.push(threat.mutations);
+  };
+  if(threat.armor != undefined) {
+    additionalDetailsArray.push(threat.armor);
+  };
+  if(threat.vehicles != undefined) {
+    additionalDetailsArray.push(threat.vehicles);
+  };
+  if(threat.special != undefined) {
+    additionalDetailsArray.push(threat.special);
+  };
+  if(threat.poison != undefined) {
+    additionalDetailsArray.push(threat.poison);
+  };
+  if(threat.pheromones != undefined) {
+    additionalDetailsArray.push(threat.pheromones);
+  };
+  if(threat.swarm != undefined) {
+    additionalDetailsArray.push(threat.swarm);
+  };
+  if(threat.rot != undefined) {
+    additionalDetailsArray.push(threat.rot);
+  };
+  if(threat.drowning != undefined) {
+    additionalDetailsArray.push(threat.drowning);
+  };
+  if(threat.comment != undefined) {
+    additionalDetailsArray.push(threat.comment);
+  };
+  for(var i = 0; i < additionalDetailsArray.length; i++){
+    additionalDetailsArrayFormatted.push(`<p>${additionalDetailsArray[i]}</p>`)
+  }
+  return additionalDetailsArrayFormatted.join("");
+}
+
+  function threatTemplate(threat) {
   return `
   <li>
   <p><b>${threat.name.toUpperCase()}:</b></p>
   <p>${threat.description}</p>
-  <p>${threat.effect}</p>
-  <p>${threat.attributes}</p>
-  <p>${threat.skills}</p>
-  <p>${threat.mutations}</p>
-  <p>${threat.armor}</p>
-  <p>${threat.weapons}</p>
-  <p>${threat.vehicles}</p>
-  <p>${threat.special}</p>
-  <p>${threat.poison}</p>
-  <p>${threat.pheromones}</p>
-  <p>${threat.swarm}</p>
-  <p>${threat.rot}</p>
-  <p>${threat.drowning}</p>
-  <p>${threat.comment}</p>
+  ${createAdditionalDetailsArray(threat)}
   </li>
   `;
 }
