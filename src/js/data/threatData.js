@@ -13,11 +13,11 @@ humanoidThreat.set(11, amnesiac);
 
 let threatData = new Map();
 threatData.set(1, humanoidThreat);
-threatData.set(2, "humanoidThreat");
-threatData.set(3, "monster");
-threatData.set(4, "monster");
-threatData.set(5, "phenomenon");
-threatData.set(6, "phenomenon");
+threatData.set(2, humanoidThreat);
+threatData.set(3, monster);
+threatData.set(4, monster);
+threatData.set(5, phenomenon);
+threatData.set(6, phenomenon);
 
 function threatTemplate(threat) {
   return `
