@@ -30,16 +30,7 @@ function rollXNumberOfD6(x){
   return baseSixResult;
 }
 
-//Prints d6 roll to the page
-function printNumber(number1, number2) {
-  let placeholder1 = document.getElementById('placeholder1');
-  let placeholder2 = document.getElementById('placeholder2');
-
-  placeholder1.innerHTML = number1;
-  placeholder2.innerHTML = number2;
-}
-
-function printMutation(number) {
+function generateMutation(number) {
   document.getElementById('mutationPlaceholderMutation').innerHTML = mutationData.get(number).mutation;
   document.getElementById('mutationPlaceholderDescription').innerHTML = mutationData.get(number).description;
 }
@@ -56,8 +47,7 @@ rollMutationButton.onclick = function() {
     }
     diceRoll = rollXNumberOfD6(2);
   }
-  printNumber(Math.floor((diceRoll / 10) % 10), Math.floor((diceRoll / 1) % 10));
-  printMutation(diceRoll);
+  generateMutation(diceRoll);
 };
 
 let generateSectorButton = document.getElementById('generateSectorButton');
