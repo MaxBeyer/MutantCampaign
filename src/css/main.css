@@ -86,12 +86,16 @@ p{
   background-color: white;
 }
 
-#threatLevel.input-group{
+.input-group{
   padding-left: 1em;
   width: 300px;
 }
 
-#threatLevelInput.form-control{
+#mutationId.input-group{
+  width:360px;
+}
+
+.form-control{
   height: 46px;
 }
 
@@ -108,23 +112,11 @@ p{
   margin-left: 15px;
 }
 
-#placeholder1, #placeholder2 {
-  height: 50px;
-  width: 50px;
-  padding: 5px;
-  margin: 0;
-  border: 1px solid gray;
-  border-radius: 10px;
-  font-size:30px;
-  text-align: center;
-  display: inline-block;
-}
-
 #copyright{
   font-size: 12px;
 }
 
-p#mutationPlaceholderMutation{
+p#mutationPlaceholderName{
   text-align: left;
   font-weight: bold;
   margin-top: 1.5em;
@@ -133,10 +125,6 @@ p#mutationPlaceholderMutation{
 p#mutationPlaceholderDescription{
   text-align: left;
   font-style: normal;
-}
-
-#rollMutationButton{
-  margin-right: 5px;
 }
 
 .social {

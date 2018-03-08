@@ -22,6 +22,8 @@ var d6 = {
   }
 }
 
+let numbersNotPossibleOn2D6 = [0, 1, 7, 8, 9, 10, 17, 18, 19, 20, 27, 28, 29, 30, 37, 38, 39, 40, 47, 48, 49, 50];
+
 function rollXNumberOfD6(x){
   let baseSixResult = d6.roll();
   for(var i = 2; i<=x; i++){
@@ -31,22 +33,28 @@ function rollXNumberOfD6(x){
 }
 
 function generateMutation(number) {
-  document.getElementById('mutationPlaceholderMutation').innerHTML = mutationData.get(number).mutation;
+  document.getElementById('mutationPlaceholderName').innerHTML = mutationData.get(number).mutation;
   document.getElementById('mutationPlaceholderDescription').innerHTML = mutationData.get(number).description;
 }
 
-let rollMutationButton = document.getElementById('rollMutationButton');
-rollMutationButton.onclick = function() {
+let generateMutationButton = document.getElementById('generateMutationButton');
+generateMutationButton.onclick = function() {
+  let mutationIdInput = +document.getElementById('mutationIdInput').value;
   let reroll = true;
   let diceRoll = rollXNumberOfD6(2);
+  if(mutationIdInput == "" || numbersNotPossibleOn2D6.includes(mutationIdInput) || mutationIdInput > 51){
 
-  while(reroll){
-    if(diceRoll < 52){
-        reroll = false;
-        break;
+    while(reroll){
+      if(diceRoll < 52){
+          reroll = false;
+          break;
+      }
+      diceRoll = rollXNumberOfD6(2);
     }
-    diceRoll = rollXNumberOfD6(2);
+  } else {
+    diceRoll = mutationIdInput;
   }
+
   generateMutation(diceRoll);
 };
 

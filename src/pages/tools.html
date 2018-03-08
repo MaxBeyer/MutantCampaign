@@ -59,9 +59,14 @@
         <div class="col-md-8 well well-md mutation-panel">
           <h3 id="yourMutation" class='span12'>Get a Mutation</h3>
           <div class='row'>
-            <button type='button' class='btn btn-primary btn-lg col-sm-3 col-xs-5' id="rollMutationButton">Roll Mutation</button>
+            <div class="input-group" id="mutationId">
+              <input type="number" min="2" max="51" class="form-control" placeholder="Enter Mutation Roll" id="mutationIdInput">
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-primary btn-lg" id="generateMutationButton">Generate Mutation</button>
+              </span>
+            </div>
           </div>
-          <p id="mutationPlaceholderMutation" class='span12'> </p>
+          <p id="mutationPlaceholderName" class='span12'> </p>
           <p id="mutationPlaceholderDescription"> </p>
         </div>
       </div>
@@ -98,7 +103,7 @@
     <p>If you're an absolute monster and want to see your players perish, go even higher (9+).</p>
     <div class='row'>
       <div class="input-group" id="threatLevel">
-        <input type="text" class="form-control" placeholder="Threat Level" id="threatLevelInput">
+        <input type="number" class="form-control" placeholder="Threat Level" id="threatLevelInput">
         <span class="input-group-btn">
           <button type="button" class="btn btn-primary btn-lg" id="generateSectorButton">Generate Sector</button>
         </span>
