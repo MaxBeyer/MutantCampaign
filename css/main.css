@@ -12,7 +12,7 @@ body {
   font-size: 16px;
   line-height: 1.5;
   background: linear-gradient(rgba(255,255,255,.70),rgba(255,255,255,.70)),
-      url("../images/background.bmp");
+      url("../img/background.bmp");
   background-size: cover;
   background-position-y: 15em;
   background-repeat: no-repeat;
@@ -63,7 +63,7 @@ p{
 
 .jumbotron {
   background: linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5)),
-      url("../images/wasteland.jpg");
+      url("../img/wasteland.jpg");
   /* background-image: url("images/wasteland.jpg"); */
   background-size: cover;
   background-position-y: 40%;
