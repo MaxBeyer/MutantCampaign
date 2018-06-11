@@ -4,7 +4,7 @@
   "description": "",
   "private": true,
   "scripts": {
-    "start": "browser-sync start --server ./src --files ./src",
+    "start": "browser-sync start --server ./ --files ./",
     "test": "mocha --compilers js:babel-register test/*.spec.js",
     "deploy:github-pages": "git subtree push --prefix src origin gh-pages"
   },
