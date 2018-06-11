@@ -12,7 +12,7 @@ body {
   font-size: 16px;
   line-height: 1.5;
   background: linear-gradient(rgba(255,255,255,.70),rgba(255,255,255,.70)),
-      url("../img/background.bmp");
+      url("/img/background.bmp");
   background-size: cover;
   background-position-y: 15em;
   background-repeat: no-repeat;
@@ -20,7 +20,7 @@ body {
   position: relative;
 }
 
-.jumbotron h1, h2{
+/* .jumbotron h1, h2{
   font-family: "Big Noodle Tilting";
   color: white;
   line-height: 50px;
@@ -31,7 +31,7 @@ body {
 .jumbotron h1{
   font-size: 60px;
   padding: 20px 10px 0px 10px;
-}
+} */
 
 h2{
   font-size: 32px;
@@ -48,28 +48,147 @@ h4{
   font-size: 24px;
 }
 
-.nav {
-  font-size: 24px;
-  font-family:"Big Noodle Tilting";
-}
-
 p{
   font-family: Locke;
 }
 
-.navbar {
-  margin-bottom: 0;
-  border-bottom: 1px solid transparent;
-  background: transparent;
-}
-
-.jumbotron {
+/*
+header.jumbotron {
   background: linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5)),
       url("../img/wasteland.jpg");
-  /* background-image: url("images/wasteland.jpg"); */
+  background-image: url("images/wasteland.jpg");
   background-size: cover;
   background-position-y: 40%;
   margin-bottom:0;
+} */
+
+#mainNav {
+  font-size: 24px;
+  position: absolute;
+  border-bottom: 1px solid #e9ecef;
+  background-color: white;
+  border-bottom: 1px solid transparent;
+  background: transparent;
+  font-family: "Big Noodle Tilting", 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+#mainNav .navbar-toggler {
+  font-size: 12px;
+  font-weight: 800;
+  padding: 13px;
+  text-transform: uppercase;
+  color: #343a40;
+}
+
+#mainNav .navbar-nav > li.nav-item > a {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+header.masthead {
+  background: linear-gradient(rgba(0,0,0,.01),rgba(0,0,0,.01)),
+      url("/img/wasteland.jpg");
+  margin-bottom: 50px;
+  background-color: #868e96;
+  position: relative;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  font-family: "Big Noodle Tilting", 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  text-shadow: #631F01 1px 0 10px;
+}
+
+header.masthead .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #212529;
+  opacity: 0.5;
+}
+
+header.masthead .page-heading,
+header.masthead .post-heading,
+header.masthead .site-heading {
+  padding: 200px 0 150px;
+  color: white;
+}
+
+@media only screen and (min-width: 768px) {
+  header.masthead .page-heading,
+  header.masthead .post-heading,
+  header.masthead .site-heading {
+    padding: 200px 0;
+  }
+}
+
+header.masthead .page-heading,
+header.masthead .site-heading {
+  text-align: center;
+}
+
+header.masthead .page-heading h1,
+header.masthead .site-heading h1 {
+  font-size: 50px;
+  margin-top: 0;
+}
+
+header.masthead .page-heading .subheading,
+header.masthead .site-heading .subheading {
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 1.1;
+  display: block;
+  margin: 10px 0 0;
+  font-family: "Big Noodle Tilting", 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+@media only screen and (min-width: 768px) {
+  header.masthead .page-heading h1,
+  header.masthead .site-heading h1 {
+    font-size: 80px;
+  }
+}
+
+header.masthead .post-heading h1 {
+  font-size: 35px;
+}
+
+header.masthead .post-heading .meta,
+header.masthead .post-heading .subheading {
+  line-height: 1.1;
+  display: block;
+}
+
+header.masthead .post-heading .subheading {
+  font-size: 24px;
+  font-weight: 600;
+  margin: 10px 0 30px;
+  font-family: "Big Noodle Tilting", 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+header.masthead .post-heading .meta {
+  font-size: 20px;
+  font-weight: 300;
+  font-style: italic;
+  font-family: "Locke", 'Times New Roman', serif;
+}
+
+header.masthead .post-heading .meta a {
+  color: #fff;
+}
+
+@media only screen and (min-width: 768px) {
+  header.masthead .post-heading h1 {
+    font-size: 55px;
+  }
+  header.masthead .post-heading .subheading {
+    font-size: 30px;
+  }
 }
 
 .first-element{
